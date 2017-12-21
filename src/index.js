@@ -1,7 +1,7 @@
 'use strict'
 
-const slack = require('./lib/slack')
+const Slack = require('./lib/slack')
 
 module.exports = {
-  slack
+  Slack
 }
