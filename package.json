@@ -1,0 +1,52 @@
+{
+  "name": "notification-hooks",
+  "description": "Notification hooks",
+  "version": "1.0.0",
+  "author": "RenderForest LLC",
+  "bugs": {
+    "url": "https://github.com/renderforest/notification-hooks/issues"
+  },
+  "contributors": [
+    {
+      "name": "Albert Hambardzumyan",
+      "email": "hambardzumyan.albert@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "request-promise": "~4.2.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "~8.0.3",
+    "eslint": "~4.13.1",
+    "eslint-config-standard": "~10.2.1",
+    "eslint-plugin-flowtype": "~2.40.1",
+    "eslint-plugin-import": "~2.8.0",
+    "eslint-plugin-node": "~5.2.1",
+    "eslint-plugin-promise": "~3.6.0",
+    "eslint-plugin-standard": "~3.0.1",
+    "fixpack": "~2.3.1",
+    "jest": "~21.2.1"
+  },
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
+  },
+  "homepage": "https://github.com/renderforest/notification-hooks#readme",
+  "keywords": [
+    "Hooks",
+    "Notification",
+    "Slack"
+  ],
+  "main": "./src/index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renderforest/notification-hooks"
+  },
+  "scripts": {
+    "build": "npm run lint && npm test",
+    "fix-package": "fixpack",
+    "lint": "./node_modules/.bin/eslint ./src --fix",
+    "test": "jest"
+  }
+}
