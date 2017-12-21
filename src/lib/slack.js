@@ -16,12 +16,12 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
  */
 function _payloadForSlack (text, channel, username, icon_emoji) {
   const msg = typeof text === 'string'
-    ? ['```', text, '```']
-    : ['```', ...Object.keys(text).map(key => `${key}: ${text[key]}`), '```']
+    ? text
+    : JSON.stringify(text, null, 2)
 
   return {
     channel,
-    text: msg.join('\n'),
+    text: ['```', msg, '```'].join('\n'),
     username,
     icon_emoji
   }
@@ -46,7 +46,7 @@ function _sendSlackMsg (text, channel, username, icon_emoji) {
 
 /**
  * @public
- * @param {string} text
+ * @param {object | string} text
  * @param {string} channel
  * @param {string} username
  * @param {string} [icon_emoji=:information_source:]
@@ -59,7 +59,7 @@ function notifyError (text, channel, username, icon_emoji = ':fire:') {
 
 /**
  * @public
- * @param {string} text
+ * @param {object | string} text
  * @param {string} channel
  * @param {string} username
  * @param {string} [icon_emoji=:information_source:]
@@ -72,7 +72,7 @@ function notifyWarn (text, channel, username, icon_emoji = ':warning:') {
 
 /**
  * @public
- * @param {string} text
+ * @param {object | string} text
  * @param {string} channel
  * @param {string} username
  * @param {string} [icon_emoji=:information_source:]
