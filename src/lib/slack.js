@@ -17,7 +17,7 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
 function _payloadForSlack (text, channel, username, icon_emoji) {
   const msg = typeof text === 'string'
     ? ['```', text, '```']
-    : ['```', ...Object.keys(text).map(key => `${key}: ${text[key]}`), '```']
+    : ['```', JSON.stringify(text, null, 2), '```']
 
   return {
     channel,
