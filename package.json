@@ -16,7 +16,9 @@
     "request-promise": "~4.2.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "~8.0.3",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "~4.13.1",
     "eslint-config-standard": "~10.2.1",
     "eslint-plugin-flowtype": "~2.40.1",
@@ -25,6 +27,8 @@
     "eslint-plugin-promise": "~3.6.0",
     "eslint-plugin-standard": "~3.0.1",
     "fixpack": "~2.3.1",
+    "flow-bin": "^0.61.0",
+    "flow-remove-types": "^1.2.3",
     "jest": "~21.2.1"
   },
   "engines": {
@@ -47,6 +51,8 @@
     "build": "npm run lint && npm test",
     "fix-package": "fixpack",
     "lint": "./node_modules/.bin/eslint ./src --fix",
+    "flow": "./node_modules/.bin/flow check",
+    "remove-flow": "rm -rf ./node_modules/.bin/flow-remove-types --pretty ./src",
     "test": "jest"
   }
 }
