@@ -88,6 +88,7 @@ module.exports = {
   notifyWarn,
   notifyInfo,
   __tests__: {
-    _payloadForSlack
+    _payloadForSlack,
+    _sendSlackMsg
   }
 }
