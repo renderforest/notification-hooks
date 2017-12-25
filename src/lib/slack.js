@@ -55,13 +55,11 @@ function _sendSlackMsg (text: IText, channel: string, username: string, icon_emo
  * @description Notify error.
  */
 function notifyError (text: INotifyText, channel: string, username: string, icon_emoji: string = ':fire:') {
-  let _text = {}
-
   if (text instanceof Error) {
-    _text = Object.assign(text, { message: text.message })
+    text = Object.assign({}, text, { message: text.message })
   }
 
-  return _sendSlackMsg(_text, channel, username, icon_emoji)
+  return _sendSlackMsg(text, channel, username, icon_emoji)
 }
 
 /**

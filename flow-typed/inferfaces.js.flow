@@ -1,5 +1,4 @@
-/* @flow */
-/* eslint-disable */
+// @flow
 
 type IText = {} | string
-type INotifyText = {} | string | Error
+type INotifyText = any // {} | string | Error
