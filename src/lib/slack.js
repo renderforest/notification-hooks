@@ -7,6 +7,11 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
 
 /**
  * @private
+ * @param {Object | string} text
+ * @param {string} channel
+ * @param {string} username
+ * @param {string} icon_emoji
+ * @returns {{channel, text, username, icon_emoji}}
  * @description Constructs payload for slack.
  *  Use ``` to send msg as code block.
  */
@@ -25,6 +30,10 @@ function _payloadForSlack (text: IText, channel: string, username: string, icon_
 
 /**
  * @private
+ * @param {Object | string} text
+ * @param {string} channel
+ * @param {string} username
+ * @param {string} icon_emoji
  * @returns {Promise.<>}
  * @description Send slack msg.
  */
@@ -38,14 +47,14 @@ function _sendSlackMsg (text: IText, channel: string, username: string, icon_emo
 
 /**
  * @public
- * @param {object | string | Error} text
+ * @param {Object | string | Error} text
  * @param {string} channel
  * @param {string} username
  * @param {string} [icon_emoji=:information_source:]
  * @return {Promise.<>}
  * @description Notify error.
  */
-function notifyError (text: IText, channel: string, username: string, icon_emoji: string = ':fire:') {
+function notifyError (text: INotifyText, channel: string, username: string, icon_emoji: string = ':fire:') {
   if (text instanceof Error) {
     text = Object.assign({}, text, { message: text.message })
   }
@@ -54,6 +63,10 @@ function notifyError (text: IText, channel: string, username: string, icon_emoji
 
 /**
  * @public
+ * @param {Object | string} text
+ * @param {string} channel
+ * @param {string} username
+ * @param {string} [icon_emoji=:information_source:]
  * @return {Promise.<>}
  * @description Notify warn.
  */
@@ -63,6 +76,10 @@ function notifyWarn (text: IText, channel: string, username: string, icon_emoji:
 
 /**
  * @public
+ * @param {Object | string} text
+ * @param {string} channel
+ * @param {string} username
+ * @param {string} [icon_emoji=:information_source:]
  * @return {Promise.<>}
  * @description Notify info.
  */
