@@ -1,4 +1,4 @@
-// @flow
+// 
 'use strict'
 
 const requestPromise = require('request-promise')
@@ -15,7 +15,7 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
  * @description Constructs payload for slack.
  *  Use ``` to send msg as code block.
  */
-function _payloadForSlack (text: IText, channel: string, username: string, icon_emoji: string) {
+function _payloadForSlack (text, channel, username, icon_emoji) {
   const msg = typeof text === 'string'
     ? text
     : JSON.stringify(text, null, 2)
@@ -37,7 +37,7 @@ function _payloadForSlack (text: IText, channel: string, username: string, icon_
  * @returns {Promise.<>}
  * @description Send slack msg.
  */
-function _sendSlackMsg (text: IText, channel: string, username: string, icon_emoji: string) {
+function _sendSlackMsg (text, channel, username, icon_emoji) {
   return requestPromise({
     url: SLACK_WEB_HOOK_URL,
     method: 'PUT',
@@ -54,7 +54,7 @@ function _sendSlackMsg (text: IText, channel: string, username: string, icon_emo
  * @return {Promise.<>}
  * @description Notify error.
  */
-function notifyError (text: INotifyText, channel: string, username: string, icon_emoji: string = ':fire:') {
+function notifyError (text, channel, username, icon_emoji = ':fire:') {
   if (text instanceof Error) {
     text = Object.assign({}, text, { message: text.message })
   }
@@ -71,7 +71,7 @@ function notifyError (text: INotifyText, channel: string, username: string, icon
  * @return {Promise.<>}
  * @description Notify warn.
  */
-function notifyWarn (text: IText, channel: string, username: string, icon_emoji: string = ':warning:') {
+function notifyWarn (text, channel, username, icon_emoji = ':warning:') {
   return _sendSlackMsg(text, channel, username, icon_emoji)
 }
 
@@ -84,7 +84,7 @@ function notifyWarn (text: IText, channel: string, username: string, icon_emoji:
  * @return {Promise.<>}
  * @description Notify info.
  */
-function notifyInfo (text: IText, channel: string, username: string, icon_emoji: string = ':information_source:') {
+function notifyInfo (text, channel, username, icon_emoji = ':information_source:') {
   return _sendSlackMsg(text, channel, username, icon_emoji)
 }
 
