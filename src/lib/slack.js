@@ -1,8 +1,6 @@
 // @flow
 'use strict'
 
-declare type IText = {} | string
-
 const requestPromise = require('request-promise')
 
 const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
