@@ -1,10 +1,14 @@
 'use strict'
+// Save original env.
+const env = Object.assign({}, process.env)
+
+process.env.SLACK_WEB_HOOK_URL = 'mock-SLACK_WEB_HOOK_URL'
 
 const Slack = require('../../src/index').Slack
 
 describe('lib/slack: ', () => {
   describe('_payloadForSlack(): ', () => {
-    test('should return updated object. In case if type of `text` is string.', () => {
+    test('should return updated object. Type of `text` argument is string.', () => {
       const text = 'mock-text'
       const channel = 'mock-channel'
       const username = 'mock-username'
@@ -18,7 +22,7 @@ describe('lib/slack: ', () => {
       expect(expectedValue.icon_emoji).toBe(icon_emoji)
     })
 
-    test('should return updated object. In case if type of `text` is object.', () => {
+    test('should return updated object. Type of `text` argument is Object.', () => {
       const text = { text: 'mock-text' }
       const channel = 'mock-channel'
       const username = 'mock-username'
@@ -35,11 +39,6 @@ describe('lib/slack: ', () => {
   })
 
   describe('_sendSlackMsg(): ', () => {
-    // Save original env.
-    const env = Object.assign({}, process.env)
-
-    process.env.SLACK_WEB_HOOK_URL = 'mock-SLACK_WEB_HOOK_URL'
-
     test('should be valid. `request-promise` is mocked.', () => {
       const text = 'mock-text'
       const channel = 'mock-channel'
@@ -55,13 +54,10 @@ describe('lib/slack: ', () => {
           expect(data.form).toBe(expectedForm)
         })
     })
-
-    // Revert changes. Set original one.
-    process.env = env
   })
 
   describe('notifyError(): ', () => {
-    test('should be valid. In case if `text` is instanceof `Error`.', () => {
+    test('should be valid. `text` argument is instance of `Error`.', () => {
       const text = new Error('mock-text')
       const channel = 'mock-channel'
       const username = 'mock-username'
@@ -74,7 +70,7 @@ describe('lib/slack: ', () => {
         })
     })
 
-    test('should be valid. `icon_emoji` should be `:fire:`.', () => {
+    test('should be valid. Check if default argument `icon_emoji` is `:fire:`.', () => {
       const text = 'mock-text'
       const channel = 'mock-channel'
       const username = 'mock-username'
@@ -89,7 +85,7 @@ describe('lib/slack: ', () => {
   })
 
   describe('notifyWarn(): ', () => {
-    test('should be valid. `icon_emoji` should be `:warning:`.', () => {
+    test('should be valid. Check if default argument `icon_emoji` is `:warning:`.', () => {
       const text = 'mock-text'
       const channel = 'mock-channel'
       const username = 'mock-username'
@@ -104,7 +100,7 @@ describe('lib/slack: ', () => {
   })
 
   describe('notifyInfo(): ', () => {
-    test('should be valid. `icon_emoji` should be `information_source`.', () => {
+    test('should be valid. Check if default argument `icon_emoji` is `information_source`.', () => {
       const text = 'mock-text'
       const channel = 'mock-channel'
       const username = 'mock-username'
@@ -117,4 +113,9 @@ describe('lib/slack: ', () => {
         })
     })
   })
+})
+
+afterAll(() => {
+  // Set original env.
+  process.env = env
 })
