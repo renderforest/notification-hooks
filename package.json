@@ -16,9 +16,8 @@
     "request-promise": "~4.2.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-eslint": "~8.0.3",
-    "babel-preset-flow": "^6.23.0",
+    "babel-preset-flow": "~6.23.0",
     "eslint": "~4.13.1",
     "eslint-config-standard": "~10.2.1",
     "eslint-plugin-flowtype": "~2.40.1",
@@ -28,7 +27,7 @@
     "eslint-plugin-standard": "~3.0.1",
     "fixpack": "~2.3.1",
     "flow-bin": "^0.61.0",
-    "flow-remove-types": "^1.2.3",
+    "flow-remove-types": "~1.2.3",
     "jest": "~21.2.1"
   },
   "engines": {
@@ -41,7 +40,7 @@
     "Notification",
     "Slack"
   ],
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "private": true,
   "repository": {
     "type": "git",
@@ -50,9 +49,9 @@
   "scripts": {
     "build": "npm run lint && npm test",
     "fix-package": "fixpack",
-    "lint": "./node_modules/.bin/eslint ./src --fix",
     "flow": "./node_modules/.bin/flow check",
-    "remove-flow": "rm -rf ./node_modules/.bin/flow-remove-types --pretty ./src",
-    "test": "jest"
+    "lint": "./node_modules/.bin/eslint ./src --fix",
+    "remove-flow": "rm -rf ./dist && ./node_modules/.bin/flow-remove-types --pretty ./src -d ./dist",
+    "test": "npm run remove-flow && jest"
   }
 }
