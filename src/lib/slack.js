@@ -54,8 +54,8 @@ function _sendSlackMsg (text, channel, username, icon_emoji) {
  * @description Notify error.
  */
 function notifyError (text, channel, username, icon_emoji = ':fire:') {
-  if(text instanceof Error){
-    text = Object.assign({}, text, {message: text.message})
+  if (text instanceof Error) {
+    text = Object.assign({}, text, { message: text.message })
   }
   return _sendSlackMsg(text, channel, username, icon_emoji)
 }
