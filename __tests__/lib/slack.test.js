@@ -59,14 +59,59 @@ describe('lib/slack: ', () => {
     // Revert changes. Set original one.
     process.env = env
   })
+
   describe('notifyError(): ', () => {
-    test('should be valid. `icon_emoji` should be `:fire:` ', () => {
+    test('should be valid. In case if `text` is instanceof `Error`.', () => {
+      const text = new Error('mock-text')
+      const channel = 'mock-channel'
+      const username = 'mock-username'
+
+      const textToPayload = Object.assign({}, text, { message: text.message })
+      const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(textToPayload, channel, username, ':fire:'))
+      return Slack.notifyError(text, channel, username)
+        .then(data => {
+          expect(data.form).toBe(expectedForm)
+        })
+    })
+
+    test('should be valid. `icon_emoji` should be `:fire:`.', () => {
       const text = 'mock-text'
       const channel = 'mock-channel'
       const username = 'mock-username'
 
-      const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(text, channel, username, ':fire:'))
+      const icon_emoji = ':fire:'
+      const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(text, channel, username, icon_emoji))
       return Slack.notifyError(text, channel, username)
+        .then(data => {
+          expect(data.form).toBe(expectedForm)
+        })
+    })
+  })
+
+  describe('notifyWarn(): ', () => {
+    test('should be valid. `icon_emoji` should be `:warning:`.', () => {
+      const text = 'mock-text'
+      const channel = 'mock-channel'
+      const username = 'mock-username'
+
+      const icon_emoji = ':warning:'
+      const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(text, channel, username, icon_emoji))
+      return Slack.notifyWarn(text, channel, username)
+        .then(data => {
+          expect(data.form).toBe(expectedForm)
+        })
+    })
+  })
+
+  describe('notifyInfo(): ', () => {
+    test('should be valid. `icon_emoji` should be `information_source`.', () => {
+      const text = 'mock-text'
+      const channel = 'mock-channel'
+      const username = 'mock-username'
+
+      const icon_emoji = ':information_source:'
+      const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(text, channel, username, icon_emoji))
+      return Slack.notifyInfo(text, channel, username)
         .then(data => {
           expect(data.form).toBe(expectedForm)
         })
