@@ -91,5 +91,9 @@ function notifyInfo (text, channel, username, icon_emoji = ':information_source:
 module.exports = {
   notifyError,
   notifyWarn,
-  notifyInfo
+  notifyInfo,
+  __tests__: {
+    _payloadForSlack,
+    _sendSlackMsg
+  }
 }
