@@ -1,7 +1,7 @@
 {
   "name": "notification-hooks",
   "description": "Notification hooks",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/notification-hooks/issues"
@@ -25,6 +25,7 @@
     }
   ],
   "dependencies": {
+    "request": "~2.83.0",
     "request-promise": "~4.2.2"
   },
   "devDependencies": {
