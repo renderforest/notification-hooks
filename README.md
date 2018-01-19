@@ -23,36 +23,45 @@ Environment variables(s):
   ``` javascript
      const SlackHooks = require('notification-hooks').Slack
   
-     const text = 'Hello world!'      // supports both string & object
-     const channel = '#media-upload'
-     const username = '@albert @ryan'       
-     const icon_emoji = ':lion_face:' // defaults to - ':fire:'
+     const options = {
+        text: 'Hello world!', // supports both string & object
+        channel: '#media-upload',
+        username: '@albert @ryan',
+        icon_emoji: ':lion_face:', // defaults to - ':fire:'
+        code: true // supports code and non code styles   
+     }  
      
-     SlackHooks.notifyError(text, channel, username, icon_emoji).then().catch()
+     SlackHooks.notifyError(options).then().catch()
   ```
 
 #### notifyWarn(...)
   ``` javascript
      const SlackHooks = require('notification-hooks').Slack
   
-     const text = 'Hi there!'         // supports both string & object
-     const channel = '#backend'
-     const username = '@cris @ryan'       
-     const icon_emoji = ':bus:'       // defaults to - ':warning:'
-     
-     SlackHooks.notifyError(text, channel, username, icon_emoji).then().catch()
+     const options = {
+        text: 'Hi there!', // supports both string & object
+        channel: '#backend,
+        username: '@cris @ryan',
+        icon_emoji: ':bus:', // defaults to - ':warning:'
+        code: false // supports code and non code styles   
+     }  
+  
+     SlackHooks.notifyWarn(options).then().catch()
   ```
   
 #### notifyInfo(...)
   ``` javascript
      const SlackHooks = require('notification-hooks').Slack
-  
-     const text = 'Hello!'            // supports both string & object
-     const channel = '#front'
-     const username = '@john'       
-     const icon_emoji = ':airplane:'  // defaults to - ':information_source:'
      
-     SlackHooks.notifyError(text, channel, username, icon_emoji).then().catch()
+     const options = {
+        text: 'Hello!', // supports both string & object
+        channel: '#front',
+        username: '@john',
+        icon_emoji: ':airplane:', // defaults to - ':information_source:'
+        code: true // supports code and non code styles   
+     }
+     
+     SlackHooks.notifyError(options).then().catch()
   ```
   
 # Development
