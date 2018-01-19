@@ -40,7 +40,7 @@ Environment variables(s):
   
      const options = {
         text: 'Hi there!', // supports both string & object
-        channel: '#backend,
+        channel: '#backend',
         username: '@cris @ryan',
         icon_emoji: ':bus:', // defaults to - ':warning:'
         code: false // supports code and non code styles   
