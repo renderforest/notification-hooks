@@ -27,8 +27,8 @@ Environment variables(s):
         text: 'Hello world!', // supports both string & object
         channel: '#media-upload',
         username: '@albert @ryan',
-        icon_emoji: ':lion_face:', // defaults to - ':fire:'
-        code: true // supports code and non code styles   
+        iconEmoji: ':lion_face:', // default value is ':fire:'
+        codeSnippet: true // default value is `false`
      }  
      
      SlackHooks.notifyError(options).then().catch()
@@ -42,8 +42,8 @@ Environment variables(s):
         text: 'Hi there!', // supports both string & object
         channel: '#backend',
         username: '@cris @ryan',
-        icon_emoji: ':bus:', // defaults to - ':warning:'
-        code: false // supports code and non code styles   
+        iconEmoji: ':bus:', // default value is ':warning:'
+        codeSnippet: false // sdefault value is `false`  
      }  
   
      SlackHooks.notifyWarn(options).then().catch()
@@ -57,8 +57,8 @@ Environment variables(s):
         text: 'Hello!', // supports both string & object
         channel: '#front',
         username: '@john',
-        icon_emoji: ':airplane:', // defaults to - ':information_source:'
-        code: true // supports code and non code styles   
+        iconEmoji: ':airplane:', // default value is ':information_source:'
+        codeSnippet: true // default value is `false`   
      }
      
      SlackHooks.notifyError(options).then().catch()
