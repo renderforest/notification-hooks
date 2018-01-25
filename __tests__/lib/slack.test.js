@@ -13,8 +13,8 @@ describe('lib/slack: ', () => {
         text: 'mock-test',
         channel: 'mock-channel',
         username: 'mock-username',
-        icon_emoji: 'mock-icon_emoji',
-        code: true
+        iconEmoji: 'mock-iconEmoji',
+        codeSnippet: true
       }
 
       const expectedValue = Slack.__tests__._payloadForSlack(options)
@@ -22,7 +22,7 @@ describe('lib/slack: ', () => {
       expect(expectedValue.channel).toBe(options.channel)
       expect(expectedValue.text).toBe(updatedText)
       expect(expectedValue.username).toBe(options.username)
-      expect(expectedValue.icon_emoji).toBe(options.icon_emoji)
+      expect(expectedValue.icon_emoji).toBe(options.iconEmoji)
     })
 
     test('should return updated object. Type of `text` argument is Object.', () => {
@@ -30,8 +30,8 @@ describe('lib/slack: ', () => {
         text: { text: 'mock-text' },
         channel: 'mock-channel',
         username: 'mock-username',
-        icon_emoji: 'mock-icon_emoji',
-        code: false
+        iconEmoji: 'mock-icon_emoji',
+        codeSnippet: false
       }
 
       const expectedValue = Slack.__tests__._payloadForSlack(options)
@@ -39,7 +39,7 @@ describe('lib/slack: ', () => {
       expect(expectedValue.channel).toBe(options.channel)
       expect(expectedValue.text).toBe(convertedText)
       expect(expectedValue.username).toBe(options.username)
-      expect(expectedValue.icon_emoji).toBe(options.icon_emoji)
+      expect(expectedValue.icon_emoji).toBe(options.iconEmoji)
     })
   })
 
@@ -50,7 +50,7 @@ describe('lib/slack: ', () => {
         channel: 'mock-channel',
         username: 'mock-username',
         icon_emoji: 'mock-icon_emoji',
-        code: false
+        codeSnippet: false
       }
 
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(options))
@@ -73,7 +73,7 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { icon_emoji: ':fire:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:' })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyError(options)
@@ -82,14 +82,14 @@ describe('lib/slack: ', () => {
         })
     })
 
-    test('should be valid. Check if default argument `icon_emoji` is `:fire:`.', () => {
+    test('should be valid. Check if default argument `iconEmoji` is `:fire:`.', () => {
       const options = {
         text: 'mock-text',
         channel: 'mock-channel',
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { icon_emoji: ':fire:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:' })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyError(options)
@@ -98,13 +98,13 @@ describe('lib/slack: ', () => {
         })
     })
 
-    test('should be valid. In case if `icon_emoji` is custom and `code` is falsy.', () => {
+    test('should be valid. In case if `iconEmoji` is custom and `codeSnippet` is falsy.', () => {
       const options = {
         text: 'mock-text',
         channel: 'mock-channel',
         username: 'mock-username',
-        icon_emoji: ':mock-icon_emoji:',
-        code: false
+        iconEmoji: ':mock-icon_emoji:',
+        codeSnippet: false
       }
 
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(options))
@@ -117,14 +117,14 @@ describe('lib/slack: ', () => {
   })
 
   describe('notifyWarn(): ', () => {
-    test('should be valid. Check if default argument `icon_emoji` is `:warning:`.', () => {
+    test('should be valid. Check if default argument `iconEmoji` is `:warning:`.', () => {
       const options = {
         text: 'mock-text',
         channel: 'mock-channel',
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { icon_emoji: ':warning:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':warning:' })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyWarn(options)
@@ -133,13 +133,13 @@ describe('lib/slack: ', () => {
         })
     })
 
-    test('should be valid. In case if `icon_emoji` is custom and `code` is truthy.', () => {
+    test('should be valid. In case if `iconEmoji` is custom and `codeSnippet` is truthy.', () => {
       const options = {
         text: 'mock-text',
         channel: 'mock-channel',
         username: 'mock-username',
-        icon_emoji: ':mock-icon_emoji:',
-        code: true
+        iconEmoji: ':mock-iconEmoji:',
+        codeSnippet: true
       }
 
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(options))
@@ -152,14 +152,14 @@ describe('lib/slack: ', () => {
   })
 
   describe('notifyInfo(): ', () => {
-    test('should be valid. Check if default argument `icon_emoji` is `information_source`.', () => {
+    test('should be valid. Check if default argument `iconEmoji` is `information_source`.', () => {
       const options = {
         text: 'mock-text',
         channel: 'mock-channel',
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { icon_emoji: ':information_source:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':information_source:' })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyInfo(options)
@@ -168,13 +168,13 @@ describe('lib/slack: ', () => {
         })
     })
 
-    test('should be valid. In case if `icon_emoji` is custom and `code` is truthy.', () => {
+    test('should be valid. In case if `iconEmoji` is custom and `codeSnippet` is truthy.', () => {
       const options = {
         text: 'mock-text',
         channel: 'mock-channel',
         username: 'mock-username',
-        icon_emoji: ':mock-icon_emoji:',
-        code: true
+        iconEmoji: ':mock-iconEmoji:',
+        codeSnippet: true
       }
 
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(options))
