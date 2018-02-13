@@ -24,11 +24,11 @@ Environment variables(s):
      const SlackHooks = require('notification-hooks').Slack
   
      const options = {
-        text: 'Hello world!', // supports string, Object, Error
         channel: '#media-upload',
-        username: '@albert @ryan',
-        iconEmoji: ':lion_face:', // default value is ':fire:'
         codeSnippet: true // default value is `false`
+        iconEmoji: ':lion_face:', // default value is ':fire:'
+        text: 'Hello world!', // supports string, Object, Error
+        username: '@albert @ryan',
      }  
      
      SlackHooks.notifyError(options).then().catch()
@@ -39,11 +39,11 @@ Environment variables(s):
      const SlackHooks = require('notification-hooks').Slack
   
      const options = {
-        text: 'Hi there!', // supports both string & Object
         channel: '#backend',
-        username: '@cris @ryan',
-        iconEmoji: ':bus:', // default value is ':warning:'
         codeSnippet: false // default value is `false`  
+        iconEmoji: ':bus:', // default value is ':warning:'
+        text: 'Hi there!', // supports both string & Object
+        username: '@cris @ryan',
      }  
   
      SlackHooks.notifyWarn(options).then().catch()
@@ -54,11 +54,11 @@ Environment variables(s):
      const SlackHooks = require('notification-hooks').Slack
      
      const options = {
-        text: 'Hello!', // supports both string & Object
         channel: '#front',
-        username: '@john',
-        iconEmoji: ':airplane:', // default value is ':information_source:'
         codeSnippet: true // default value is `false`   
+        iconEmoji: ':airplane:', // default value is ':information_source:'
+        text: 'Hello!', // supports both string & Object
+        username: '@john',
      }
      
      SlackHooks.notifyError(options).then().catch()
