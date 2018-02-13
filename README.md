@@ -24,7 +24,7 @@ Environment variables(s):
      const SlackHooks = require('notification-hooks').Slack
   
      const options = {
-        text: 'Hello world!', // supports both string & object
+        text: 'Hello world!', // supports string, Object, Error
         channel: '#media-upload',
         username: '@albert @ryan',
         iconEmoji: ':lion_face:', // default value is ':fire:'
@@ -39,7 +39,7 @@ Environment variables(s):
      const SlackHooks = require('notification-hooks').Slack
   
      const options = {
-        text: 'Hi there!', // supports both string & object
+        text: 'Hi there!', // supports both string & Object
         channel: '#backend',
         username: '@cris @ryan',
         iconEmoji: ':bus:', // default value is ':warning:'
@@ -54,7 +54,7 @@ Environment variables(s):
      const SlackHooks = require('notification-hooks').Slack
      
      const options = {
-        text: 'Hello!', // supports both string & object
+        text: 'Hello!', // supports both string & Object
         channel: '#front',
         username: '@john',
         iconEmoji: ':airplane:', // default value is ':information_source:'
