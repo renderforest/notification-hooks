@@ -8,11 +8,11 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
 /**
  * @private
  * @param {Object} options
- * @param {Object | string} options.text
  * @param {string} options.channel
- * @param {string} options.username
- * @param {string} options.iconEmoji
  * @param {boolean} options.codeSnippet
+ * @param {string} options.iconEmoji
+ * @param {Object | string | Error} options.text
+ * @param {string} options.username
  * @return {{channel, text, username, icon_emoji}}
  * @description Constructs payload for slack.
  *  Use ``` to send msg as code block.
@@ -33,11 +33,11 @@ function _payloadForSlack (options: IOptions) {
 /**
  * @private
  * @param {Object} options
- * @param {Object | string} options.text
  * @param {string} options.channel
- * @param {string} options.username
- * @param {string} options.iconEmoji
  * @param {boolean} options.codeSnippet
+ * @param {string} options.iconEmoji
+ * @param {Object | string | Error} options.text
+ * @param {string} options.username
  * @returns {Promise.<>}
  * @description Send slack msg.
  */
@@ -52,11 +52,11 @@ function _sendSlackMsg (options: IOptions) {
 /**
  * @public
  * @param {Object} options
- * @param {Object | string | Error} options.text
  * @param {string} options.channel
+ * @param {Object | string | Error} options.text
  * @param {string} options.username
- * @param {string} [options.iconEmoji=:fire:]
  * @param {boolean} [options.codeSnippet=false]
+ * @param {string} [options.iconEmoji=:fire:]
  * @return {Promise.<>}
  * @description Notify error.
  */
@@ -75,11 +75,11 @@ function notifyError (options: IOptions) {
 /**
  * @public
  * @param {Object} options
- * @param {Object | string} options.text
  * @param {string} options.channel
+ * @param {Object | string} options.text
  * @param {string} options.username
- * @param {string} [options.iconEmoji=:warning:]
  * @param {boolean} [options.codeSnippet=false]
+ * @param {string} [options.iconEmoji=:warning:]
  * @return {Promise.<>}
  * @description Notify warn.
  */
@@ -98,11 +98,11 @@ function notifyWarn (options: IOptions) {
 /**
  * @public
  * @param {Object} options
- * @param {Object | string} options.text
  * @param {string} options.channel
+ * @param {Object | string} options.text
  * @param {string} options.username
- * @param {string} [options.iconEmoji=:information_source:]
  * @param {boolean} [options.codeSnippet=false]
+ * @param {string} [options.iconEmoji=:information_source:]
  * @return {Promise.<>}
  * @description Notify info.
  */
