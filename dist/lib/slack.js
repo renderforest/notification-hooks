@@ -7,85 +7,121 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
 
 /**
  * @private
- * @param {Object | string} text
- * @param {string} channel
- * @param {string} username
- * @param {string} icon_emoji
- * @returns {{channel, text, username, icon_emoji}}
+ * @param {Object} options
+ * @param {string} options.channel
+ * @param {boolean} options.codeSnippet
+ * @param {string} options.iconEmoji
+ * @param {Object | string | Error} options.text
+ * @param {string} options.username
+ * @return {{channel, text, username, icon_emoji}}
  * @description Constructs payload for slack.
  *  Use ``` to send msg as code block.
  */
-function _payloadForSlack (text, channel, username, icon_emoji) {
+function _payloadForSlack (options) {
+  const { channel, codeSnippet, iconEmoji, text, username } = options
+
   const msg = typeof text === 'string'
     ? text
     : JSON.stringify(text, null, 2)
 
   return {
     channel,
-    text: ['```', msg, '```'].join('\n'),
-    username,
-    icon_emoji
+    icon_emoji: iconEmoji,
+    text: codeSnippet ? ['```', msg, '```'].join('\n') : msg,
+    username
   }
 }
 
 /**
  * @private
- * @param {Object | string} text
- * @param {string} channel
- * @param {string} username
- * @param {string} icon_emoji
+ * @param {Object} options
+ * @param {string} options.channel
+ * @param {boolean} options.codeSnippet
+ * @param {string} options.iconEmoji
+ * @param {Object | string | Error} options.text
+ * @param {string} options.username
  * @returns {Promise.<>}
  * @description Send slack msg.
  */
-function _sendSlackMsg (text, channel, username, icon_emoji) {
+function _sendSlackMsg (options) {
   return requestPromise({
     url: SLACK_WEB_HOOK_URL,
     method: 'PUT',
-    form: JSON.stringify(_payloadForSlack(text, channel, username, icon_emoji))
+    form: JSON.stringify(_payloadForSlack(options))
   })
 }
 
 /**
  * @public
- * @param {Object | string | Error} text
- * @param {string} channel
- * @param {string} username
- * @param {string} [icon_emoji=:information_source:]
+ * @param {Object} options
+ * @param {string} options.channel
+ * @param {Object | string | Error} options.text
+ * @param {string} options.username
+ * @param {boolean} [options.codeSnippet=false]
+ * @param {string} [options.iconEmoji=:fire:]
  * @return {Promise.<>}
  * @description Notify error.
  */
-function notifyError (text, channel, username, icon_emoji = ':fire:') {
-  if (text instanceof Error) {
-    text = Object.assign({}, text, { message: text.message })
+function notifyError (options) {
+  if (options.text instanceof Error) {
+    options.text = Object.assign({}, options.text, { message: options.text.message })
   }
 
-  return _sendSlackMsg(text, channel, username, icon_emoji)
+  if (!options.iconEmoji) {
+    options.iconEmoji = ':fire:'
+  }
+
+  if (!options.hasOwnProperty('codeSnippet')) {
+    options.codeSnippet = true
+  }
+
+  return _sendSlackMsg(options)
 }
 
 /**
  * @public
- * @param {Object | string} text
- * @param {string} channel
- * @param {string} username
- * @param {string} [icon_emoji=:information_source:]
+ * @param {Object} options
+ * @param {string} options.channel
+ * @param {Object | string} options.text
+ * @param {string} options.username
+ * @param {boolean} [options.codeSnippet=false]
+ * @param {string} [options.iconEmoji=:warning:]
  * @return {Promise.<>}
  * @description Notify warn.
  */
-function notifyWarn (text, channel, username, icon_emoji = ':warning:') {
-  return _sendSlackMsg(text, channel, username, icon_emoji)
+function notifyWarn (options) {
+  if (!options.iconEmoji) {
+    options.iconEmoji = ':warning:'
+  }
+
+  if (!options.hasOwnProperty('codeSnippet')) {
+    options.codeSnippet = true
+  }
+
+  return _sendSlackMsg(options)
 }
 
 /**
  * @public
- * @param {Object | string} text
- * @param {string} channel
- * @param {string} username
- * @param {string} [icon_emoji=:information_source:]
+ * @param {Object} options
+ * @param {string} options.channel
+ * @param {Object | string} options.text
+ * @param {string} options.username
+ * @param {boolean} [options.codeSnippet=false]
+ * @param {string} [options.iconEmoji=:information_source:]
  * @return {Promise.<>}
  * @description Notify info.
  */
-function notifyInfo (text, channel, username, icon_emoji = ':information_source:') {
-  return _sendSlackMsg(text, channel, username, icon_emoji)
+function notifyInfo (options) {
+  if (!options.iconEmoji) {
+    options.iconEmoji = ':information_source:'
+  }
+
+  if (!options.hasOwnProperty('codeSnippet')) {
+    options.codeSnippet = true
+  }
+
+  return _sendSlackMsg(options)
 }
 
 module.exports = {

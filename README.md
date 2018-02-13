@@ -1,5 +1,5 @@
 # notification-hooks
-Notification Hooks
+Notification Hooks 🚨
 
 [![Build Status](https://travis-ci.org/renderforest/notification-hooks.svg?branch=master)](https://travis-ci.org/renderforest/notification-hooks)
 [![GitHub issues](https://img.shields.io/github/issues/renderforest/notification-hooks.svg)](https://github.com/renderforest/notification-hooks/issues)
@@ -10,7 +10,7 @@ Notification Hooks
 [![DevDep](https://img.shields.io/david/dev/renderforest/notification-hooks.svg)](https://david-dm.org/renderforest/notification-hooks?type=dev)
 
 
-# API
+# API ✍
 
 Environment variables(s):
 
@@ -23,39 +23,48 @@ Environment variables(s):
   ``` javascript
      const SlackHooks = require('notification-hooks').Slack
   
-     const text = 'Hello world!'      // supports both string & object
-     const channel = '#media-upload'
-     const username = '@albert @ryan'       
-     const icon_emoji = ':lion_face:' // defaults to - ':fire:'
+     const options = {
+        channel: '#media-upload',
+        codeSnippet: false, // default value is `true`
+        iconEmoji: ':lion_face:', // default value is ':fire:'
+        text: 'Hello world!', // supports string, Object, Error
+        username: '@albert @ryan'
+     }  
      
-     SlackHooks.notifyError(text, channel, username, icon_emoji).then().catch()
+     SlackHooks.notifyError(options).then().catch()
   ```
 
 #### notifyWarn(...)
   ``` javascript
      const SlackHooks = require('notification-hooks').Slack
   
-     const text = 'Hi there!'         // supports both string & object
-     const channel = '#backend'
-     const username = '@cris @ryan'       
-     const icon_emoji = ':bus:'       // defaults to - ':warning:'
-     
-     SlackHooks.notifyError(text, channel, username, icon_emoji).then().catch()
+     const options = {
+        channel: '#backend',
+        codeSnippet: false, // default value is `true`  
+        iconEmoji: ':bus:', // default value is ':warning:'
+        text: 'Hi there!', // supports both string & Object
+        username: '@cris @ryan'
+     }
+  
+     SlackHooks.notifyWarn(options).then().catch()
   ```
   
 #### notifyInfo(...)
   ``` javascript
      const SlackHooks = require('notification-hooks').Slack
-  
-     const text = 'Hello!'            // supports both string & object
-     const channel = '#front'
-     const username = '@john'       
-     const icon_emoji = ':airplane:'  // defaults to - ':information_source:'
      
-     SlackHooks.notifyError(text, channel, username, icon_emoji).then().catch()
+     const options = {
+        channel: '#front',
+        codeSnippet: true, // default value is `true`   
+        iconEmoji: ':airplane:', // default value is ':information_source:'
+        text: 'Hello!', // supports both string & Object
+        username: '@john'
+     }
+     
+     SlackHooks.notifyError(options).then().catch()
   ```
   
-# Development
+# Development ⚠
 In case you add new third party dependencies, use flow-typed npm package to add annotations for that packages.
  * npm i -g flow-typed
  * flow-typed install --ignoreDeps dev
