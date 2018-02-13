@@ -25,10 +25,10 @@ Environment variables(s):
   
      const options = {
         channel: '#media-upload',
-        codeSnippet: true // default value is `false`
+        codeSnippet: true, // default value is `false`
         iconEmoji: ':lion_face:', // default value is ':fire:'
         text: 'Hello world!', // supports string, Object, Error
-        username: '@albert @ryan',
+        username: '@albert @ryan'
      }  
      
      SlackHooks.notifyError(options).then().catch()
@@ -40,11 +40,11 @@ Environment variables(s):
   
      const options = {
         channel: '#backend',
-        codeSnippet: false // default value is `false`  
+        codeSnippet: false, // default value is `false`  
         iconEmoji: ':bus:', // default value is ':warning:'
         text: 'Hi there!', // supports both string & Object
-        username: '@cris @ryan',
-     }  
+        username: '@cris @ryan'
+     }
   
      SlackHooks.notifyWarn(options).then().catch()
   ```
@@ -55,10 +55,10 @@ Environment variables(s):
      
      const options = {
         channel: '#front',
-        codeSnippet: true // default value is `false`   
+        codeSnippet: true, // default value is `false`   
         iconEmoji: ':airplane:', // default value is ':information_source:'
         text: 'Hello!', // supports both string & Object
-        username: '@john',
+        username: '@john'
      }
      
      SlackHooks.notifyError(options).then().catch()
