@@ -43,7 +43,7 @@ Environment variables(s):
         channel: '#backend',
         username: '@cris @ryan',
         iconEmoji: ':bus:', // default value is ':warning:'
-        codeSnippet: false // sdefault value is `false`  
+        codeSnippet: false // default value is `false`  
      }  
   
      SlackHooks.notifyWarn(options).then().catch()
