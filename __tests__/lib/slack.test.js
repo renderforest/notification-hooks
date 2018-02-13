@@ -73,7 +73,7 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:', codeSnippet: true })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyError(options)
@@ -89,7 +89,7 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:', codeSnippet: true })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyError(options)
@@ -124,7 +124,7 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':warning:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':warning:', codeSnippet: true })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyWarn(options)
@@ -159,7 +159,7 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':information_source:' })
+      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':information_source:', codeSnippet: true })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyInfo(options)

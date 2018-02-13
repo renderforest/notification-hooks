@@ -68,7 +68,7 @@ function notifyError (options: IOptions) {
   }
 
   if (!options.hasOwnProperty('codeSnippet')) {
-    options.codeSnippet = false
+    options.codeSnippet = true
   }
 
   return _sendSlackMsg(options)
@@ -91,7 +91,7 @@ function notifyWarn (options: IOptions) {
   }
 
   if (!options.hasOwnProperty('codeSnippet')) {
-    options.codeSnippet = false
+    options.codeSnippet = true
   }
 
   return _sendSlackMsg(options)
@@ -114,7 +114,7 @@ function notifyInfo (options: IOptions) {
   }
 
   if (!options.hasOwnProperty('codeSnippet')) {
-    options.codeSnippet = false
+    options.codeSnippet = true
   }
 
   return _sendSlackMsg(options)
