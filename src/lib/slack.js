@@ -18,15 +18,17 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
  *  Use ``` to send msg as code block.
  */
 function _payloadForSlack (options: IOptions) {
-  const msg = typeof options.text === 'string'
-    ? options.text
-    : JSON.stringify(options.text, null, 2)
+  const {channel, codeSnippet, iconEmoji, text, username} = options
+
+  const msg = typeof text === 'string'
+    ? text
+    : JSON.stringify(text, null, 2)
 
   return {
-    channel: options.channel,
-    text: options.codeSnippet ? ['```', msg, '```'].join('\n') : msg,
-    username: options.username,
-    icon_emoji: options.iconEmoji
+    channel,
+    icon_emoji: iconEmoji,
+    text: codeSnippet ? ['```', msg, '```'].join('\n') : msg,
+    username
   }
 }
 
