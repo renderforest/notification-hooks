@@ -1,4 +1,0 @@
-// @flow
-
-type IText = {} | string
-type INotifyText = any // {} | string | Error
