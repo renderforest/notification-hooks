@@ -1,8 +1,8 @@
 // @flow
 
 declare interface IOptions {
-  codeSnippet?: boolean,
   channel: string,
+  codeSnippet?: boolean,
   iconEmoji?: string,
   text: Object | string | Error,
   username: string
