@@ -1,5 +1,5 @@
 # notification-hooks
-Notification Hooks
+Notification Hooks 🚨
 
 [![Build Status](https://travis-ci.org/renderforest/notification-hooks.svg?branch=master)](https://travis-ci.org/renderforest/notification-hooks)
 [![GitHub issues](https://img.shields.io/github/issues/renderforest/notification-hooks.svg)](https://github.com/renderforest/notification-hooks/issues)
@@ -10,7 +10,7 @@ Notification Hooks
 [![DevDep](https://img.shields.io/david/dev/renderforest/notification-hooks.svg)](https://david-dm.org/renderforest/notification-hooks?type=dev)
 
 
-# API
+# API ✍
 
 Environment variables(s):
 
@@ -64,7 +64,7 @@ Environment variables(s):
      SlackHooks.notifyError(options).then().catch()
   ```
   
-# Development
+# Development ⚠
 In case you add new third party dependencies, use flow-typed npm package to add annotations for that packages.
  * npm i -g flow-typed
  * flow-typed install --ignoreDeps dev
