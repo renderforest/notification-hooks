@@ -63,6 +63,10 @@ function _sendSlackMsg (options) {
  * @description Notify error.
  */
 function notifyError (options) {
+  if (options.text instanceof Error) {
+    options.text = Object.assign({}, options.text, { message: options.text.message })
+  }
+
   if (!options.iconEmoji) {
     options.iconEmoji = ':fire:'
   }

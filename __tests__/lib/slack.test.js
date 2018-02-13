@@ -73,7 +73,13 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':fire:', codeSnippet: true })
+      const optionsForExpectedForm = Object.assign({}, options, {
+        iconEmoji: ':fire:',
+        codeSnippet: true,
+        text: {
+          message: options.text.message
+        }
+      })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyError(options)
@@ -159,7 +165,10 @@ describe('lib/slack: ', () => {
         username: 'mock-username'
       }
 
-      const optionsForExpectedForm = Object.assign({}, options, { iconEmoji: ':information_source:', codeSnippet: true })
+      const optionsForExpectedForm = Object.assign({}, options, {
+        iconEmoji: ':information_source:',
+        codeSnippet: true
+      })
       const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(optionsForExpectedForm))
 
       return Slack.notifyInfo(options)
