@@ -1,7 +1,7 @@
 {
-  "name": "notification-hooks",
+  "name": "@renderforest/notification-hooks",
   "description": "Notification hooks",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/notification-hooks/issues"
@@ -54,7 +54,6 @@
     "Slack"
   ],
   "main": "./dist/index.js",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/renderforest/notification-hooks"
