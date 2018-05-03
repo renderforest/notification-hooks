@@ -1,9 +1,0 @@
-// @flow
-
-declare interface IOptions {
-  channel: string,
-  codeSnippet?: boolean,
-  iconEmoji?: string,
-  text: Object | string | Error,
-  username: string
-}
