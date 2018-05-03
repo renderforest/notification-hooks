@@ -41,9 +41,9 @@
   },
   "homepage": "https://github.com/renderforest/notification-hooks#readme",
   "keywords": [
-    "Hooks",
-    "Notification",
-    "Slack"
+    "hooks",
+    "notification",
+    "slack"
   ],
   "main": "./src/index.js",
   "pre-commit": [
