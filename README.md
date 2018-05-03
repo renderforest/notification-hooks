@@ -1,14 +1,7 @@
 # notification-hooks
-Notification Hooks 🚨
+Notification Hooks.
 
 [![Build Status](https://travis-ci.org/renderforest/notification-hooks.svg?branch=master)](https://travis-ci.org/renderforest/notification-hooks)
-[![GitHub issues](https://img.shields.io/github/issues/renderforest/notification-hooks.svg)](https://github.com/renderforest/notification-hooks/issues)
-[![GitHub release](https://img.shields.io/github/release/renderforest/notification-hooks.svg)](https://github.com/renderforest/notification-hooks/releases)
-[![GitHub stars](https://img.shields.io/github/stars/renderforest/notification-hooks.svg)](https://github.com/renderforest/notification-hooks/stargazers)
-
-[![Dep](https://img.shields.io/david/renderforest/notification-hooks.svg)](https://david-dm.org/renderforest/notification-hooks)
-[![DevDep](https://img.shields.io/david/dev/renderforest/notification-hooks.svg)](https://david-dm.org/renderforest/notification-hooks?type=dev)
-
 
 # API ✍
 
