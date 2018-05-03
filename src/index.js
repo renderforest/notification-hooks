@@ -1,4 +1,3 @@
-// @flow
 'use strict'
 
 const Slack = require('./lib/slack')

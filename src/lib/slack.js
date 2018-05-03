@@ -1,4 +1,3 @@
-// @flow
 'use strict'
 
 const requestPromise = require('request-promise')
@@ -17,7 +16,7 @@ const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
  * @description Constructs payload for slack.
  *  Use ``` to send msg as code block.
  */
-function _payloadForSlack (options: IOptions) {
+function _payloadForSlack (options) {
   const { channel, codeSnippet, iconEmoji, text, username } = options
 
   const msg = typeof text === 'string'
@@ -43,7 +42,7 @@ function _payloadForSlack (options: IOptions) {
  * @returns {Promise.<>}
  * @description Send slack msg.
  */
-function _sendSlackMsg (options: IOptions) {
+function _sendSlackMsg (options) {
   return requestPromise({
     url: SLACK_WEB_HOOK_URL,
     method: 'PUT',
@@ -62,7 +61,7 @@ function _sendSlackMsg (options: IOptions) {
  * @return {Promise.<>}
  * @description Notify error.
  */
-function notifyError (options: any) {
+function notifyError (options) {
   if (options.text instanceof Error) {
     options.text = Object.assign({}, options.text, { message: options.text.message })
   }
@@ -89,7 +88,7 @@ function notifyError (options: any) {
  * @return {Promise.<>}
  * @description Notify warn.
  */
-function notifyWarn (options: IOptions) {
+function notifyWarn (options) {
   if (!options.iconEmoji) {
     options.iconEmoji = ':warning:'
   }
@@ -112,7 +111,7 @@ function notifyWarn (options: IOptions) {
  * @return {Promise.<>}
  * @description Notify info.
  */
-function notifyInfo (options: IOptions) {
+function notifyInfo (options) {
   if (!options.iconEmoji) {
     options.iconEmoji = ':information_source:'
   }
