@@ -1,4 +1,3 @@
-'use strict'
 // Save original env.
 const env = Object.assign({}, process.env)
 
