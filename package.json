@@ -55,8 +55,8 @@
   },
   "scripts": {
     "fix-package": "fixpack",
-    "lint": "./node_modules/.bin/eslint ./src ./test --fix",
-    "lint-no-fix": "./node_modules/.bin/eslint ./src ./test",
+    "lint": "./node_modules/.bin/eslint ./src ./test ./__mocks__ --fix",
+    "lint-no-fix": "./node_modules/.bin/eslint ./src ./test ./__mocks__",
     "pre-commit": "npm run lint-no-fix && npm run test",
     "test": "jest --silent",
     "test-coverage": "jest --coverage --silent",
