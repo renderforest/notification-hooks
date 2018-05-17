@@ -9,7 +9,7 @@ Environment variables(s):
 
 #### notifyError(...)
   ``` javascript
-     const SlackHooks = require('notification-hooks').Slack
+     const SlackHooks = require('@renderforest/notification-hooks').Slack
   
      const options = {
         channel: '#media-upload',
@@ -24,7 +24,7 @@ Environment variables(s):
 
 #### notifyWarn(...)
   ``` javascript
-     const SlackHooks = require('notification-hooks').Slack
+     const SlackHooks = require('@renderforest/notification-hooks').Slack
   
      const options = {
         channel: '#backend',
@@ -39,7 +39,7 @@ Environment variables(s):
   
 #### notifyInfo(...)
   ``` javascript
-     const SlackHooks = require('notification-hooks').Slack
+     const SlackHooks = require('@renderforest/notification-hooks').Slack
      
      const options = {
         channel: '#front',
@@ -49,5 +49,5 @@ Environment variables(s):
         username: '@john'
      }
      
-     SlackHooks.notifyError(options).then().catch()
+     SlackHooks.notifyInfo(options).then().catch()
   ```
