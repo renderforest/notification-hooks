@@ -21,7 +21,7 @@
     }
   ],
   "dependencies": {
-    "request": "2.85.0",
+    "request": "2.88.0",
     "request-promise": "4.2.2"
   },
   "devDependencies": {
@@ -31,8 +31,7 @@
     "eslint-plugin-node": "6.0.1",
     "eslint-plugin-promise": "3.7.0",
     "eslint-plugin-standard": "3.1.0",
-    "fixpack": "2.3.1",
-    "jest": "22.4.3",
+    "jest": "23.6.0",
     "pre-commit": "1.2.2"
   },
   "engines": {
@@ -54,7 +53,6 @@
     "url": "https://github.com/renderforest/notification-hooks"
   },
   "scripts": {
-    "fix-package": "fixpack",
     "lint": "./node_modules/.bin/eslint ./src ./test ./__mocks__ --fix",
     "lint-no-fix": "./node_modules/.bin/eslint ./src ./test ./__mocks__",
     "pre-commit": "npm run lint-no-fix && npm run test",
