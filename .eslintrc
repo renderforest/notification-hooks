@@ -44,6 +44,7 @@
     "no-proto": 2,
     "no-sequences": 2,
     "no-shadow": 0,
+    "no-prototype-builtins": 0,
     "no-shadow-restricted-names": 2,
     "no-throw-literal": 2,
     "no-underscore-dangle": 0,
