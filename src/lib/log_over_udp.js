@@ -6,11 +6,11 @@ function log_over_UDP (host, port, message, url, tag) {
   const logObject = url + ' ' + message + ' ' + tag
   const m = Buffer.from(JSON.stringify(logObject))
   client.send(m, 0, m.length, port, host, function (err, bytes) {
-    console.log(err)
+    if (err) {
+      console.log('UDP SEND ERROR', err)
+    }
     client.close()
   })
 }
 
-exports = {
-  log_over_UDP
-}
+module.exports = log_over_UDP
