@@ -42,9 +42,8 @@
     "lint": "./node_modules/.bin/eslint ./src ./test ./__mocks__ --fix",
     "lint-no-fix": "./node_modules/.bin/eslint ./src ./test ./__mocks__",
     "pre-commit": "npm run lint-no-fix && npm run test",
-    "test": "jest",
+    "test": "jest --silent",
     "test-coverage": "jest --coverage --silent",
-    "test-watch": "jest --watch --silent",
-    "cache": "jest --clearCache"
+    "test-watch": "jest --watch --silent"
   }
 }
