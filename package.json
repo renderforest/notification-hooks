@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "dgram": "^1.0.1",
-    "request": "2.88.2",
-    "request-promise": "4.2.6"
+    "node-fetch": "2.7.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
@@ -43,8 +42,9 @@
     "lint": "./node_modules/.bin/eslint ./src ./test ./__mocks__ --fix",
     "lint-no-fix": "./node_modules/.bin/eslint ./src ./test ./__mocks__",
     "pre-commit": "npm run lint-no-fix && npm run test",
-    "test": "jest --silent",
+    "test": "jest",
     "test-coverage": "jest --coverage --silent",
-    "test-watch": "jest --watch --silent"
+    "test-watch": "jest --watch --silent",
+    "cache": "jest --clearCache"
   }
 }
