@@ -44,6 +44,9 @@ function _payloadForSlack (options) {
 function _sendSlackMsg (options) {
   return nodeFetch(SLACK_WEB_HOOK_URL, {
     method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(_payloadForSlack(options))
   })
 }
