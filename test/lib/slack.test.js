@@ -200,6 +200,6 @@ describe('lib/slack: ', () => {
 })
 
 afterAll(() => {
-  // Set original env.
+  // Set original config.
   config.SLACK_WEB_HOOK_URL = originalConfig.SLACK_WEB_HOOK_URL
 })
