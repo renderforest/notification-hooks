@@ -1,7 +1,11 @@
-// Save original env.
-const env = Object.assign({}, process.env)
+const config = require('../../config/config')
 
-process.env.SLACK_WEB_HOOK_URL = 'mock-SLACK_WEB_HOOK_URL'
+// Save original config.
+const originalConfig = Object.assign({}, config)
+
+config.SLACK_WEB_HOOK_URL = 'mock-SLACK_WEB_HOOK_URL'
+
+const { SLACK_WEB_HOOK_URL } = config
 
 const Slack = require('../../src/index').Slack
 
@@ -43,7 +47,7 @@ describe('lib/slack: ', () => {
   })
 
   describe('_sendSlackMsg(): ', () => {
-    test('should be valid. `request-promise` is mocked.', () => {
+    test('should be valid. `node-fetch` is mocked.', () => {
       const options = {
         text: { text: 'mock-text' },
         channel: 'mock-channel',
@@ -52,14 +56,14 @@ describe('lib/slack: ', () => {
         codeSnippet: false
       }
 
-      const expectedForm = JSON.stringify(Slack.__tests__._payloadForSlack(options))
+      const expectedBody = JSON.stringify(Slack.__tests__._payloadForSlack(options))
 
       expect.assertions(3)
       return Slack.__tests__._sendSlackMsg(options)
         .then((data) => {
-          expect(data.url).toBe(process.env.SLACK_WEB_HOOK_URL)
-          expect(data.method).toBe('PUT')
-          expect(data.form).toBe(expectedForm)
+          expect(data.url).toBe(SLACK_WEB_HOOK_URL)
+          expect(data.params.method).toBe('PUT')
+          expect(data.params.body).toBe(expectedBody)
         })
     })
   })
@@ -83,7 +87,7 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyError(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
 
@@ -99,7 +103,7 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyError(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
 
@@ -116,7 +120,7 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyError(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
   })
@@ -134,7 +138,7 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyWarn(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
 
@@ -151,7 +155,7 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyWarn(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
   })
@@ -172,7 +176,7 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyInfo(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
 
@@ -189,13 +193,13 @@ describe('lib/slack: ', () => {
 
       return Slack.notifyInfo(options)
         .then(data => {
-          expect(data.form).toBe(expectedForm)
+          expect(data.params.body).toBe(expectedForm)
         })
     })
   })
 })
 
 afterAll(() => {
-  // Set original env.
-  process.env = env
+  // Set original config.
+  config.SLACK_WEB_HOOK_URL = originalConfig.SLACK_WEB_HOOK_URL
 })

@@ -1,6 +1,7 @@
-const requestPromise = require('request-promise')
+const nodeFetch = require('node-fetch')
+const config = require('../../config/config')
 
-const SLACK_WEB_HOOK_URL = process.env.SLACK_WEB_HOOK_URL
+const { SLACK_WEB_HOOK_URL } = config
 
 /**
  * @private
@@ -41,10 +42,12 @@ function _payloadForSlack (options) {
  * @description Send slack msg.
  */
 function _sendSlackMsg (options) {
-  return requestPromise({
-    url: SLACK_WEB_HOOK_URL,
+  return nodeFetch(SLACK_WEB_HOOK_URL, {
     method: 'PUT',
-    form: JSON.stringify(_payloadForSlack(options))
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(_payloadForSlack(options))
   })
 }
 
